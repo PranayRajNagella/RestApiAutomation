@@ -55,6 +55,5 @@
 			<artifactId>json-path</artifactId>
 			<version>4.3.3</version>
 		</dependency>
-
 	</dependencies>
 </project>
