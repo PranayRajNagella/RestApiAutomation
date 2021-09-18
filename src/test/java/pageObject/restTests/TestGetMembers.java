@@ -27,6 +27,7 @@ public class TestGetMembers extends RestBase{
 			Response=httpGet("https://reqres.in/api","users", headers, pathParams, queryParams);
 			System.out.println(Response.asString());
 			RestValidations.StatusCodeValidation(Response, 200);
+			System.out.println(Response.prettyPrint());
 		}
 		catch(Exception e)
 		{
