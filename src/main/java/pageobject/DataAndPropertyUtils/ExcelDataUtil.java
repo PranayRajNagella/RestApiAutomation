@@ -2,6 +2,7 @@ package pageobject.DataAndPropertyUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,7 @@ public class ExcelDataUtil {
 	static Sheet sheet;
 	
 	
-	public static Sheet getSheetFromExcel(String Path,String SheetName) throws Exception
+	public Sheet getSheetFromExcel(String Path,String SheetName) throws Exception
 	{
 		try
 		{
@@ -42,20 +43,22 @@ public class ExcelDataUtil {
 		return sheet;
 	}
 	
-	public Object[][] getDataForTestCase(String Sheet,String TestCaseName)
+	public Object[][] getDataForTestCase(Sheet Sheet,String TestCaseName) throws Exception
 	{
 		Object[][] data=null;
 		
+		try
+		{
 		int getNumberOFRows=sheet.getLastRowNum();
 		System.out.println(getNumberOFRows+" Number of Rows in the Excel");
 		
 		int runCountOfTestCase=0;
 		List<Integer> runIndexs=new ArrayList<Integer>();
 		
-		for(int i=0;i<getNumberOFRows;i++)
+		for(int i=0;i<=getNumberOFRows;i++)
 		{
 			if(TestCaseName.equalsIgnoreCase(this.getColumnData(sheet,"TestCaseName",i)) && 
-					TestCaseName.equalsIgnoreCase(this.getColumnData(sheet,"RunMode",i)))
+					this.getColumnData(sheet,"RunMode",i).equalsIgnoreCase("YES"))
 			{
 				runIndexs.add(i);
 				runCountOfTestCase++;
@@ -85,9 +88,23 @@ public class ExcelDataUtil {
 				default:
 					break;
 				}
-			
 			}
 			data[k][0]=mapData;
+			k++;
+		}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				book.close();
+			}
+			catch (Exception e) {
+				throw e;
+			}
 		}
 		return data;		
 	}
