@@ -53,5 +53,11 @@ public class TestGetMembers extends BaseTest{
 		System.out.println("Inside the Second Test");
 		System.out.println(data);
 	}
+	
+	public void test_03_GetMembers(Map<String,Object> data)
+	{
+		System.out.println("Inside third one Second Test");
+		System.out.println(data);
+	}
 
 }
