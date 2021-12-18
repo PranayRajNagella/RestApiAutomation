@@ -60,6 +60,7 @@ public class GetMembers extends BaseTest {
 			System.out.println(datamap);
 			Response=httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
 			RestValidations.StatusCodeValidation(Response, 200);
+			System.out.println("Test INfo added");
 		
 		}
 		catch (Exception e) {
