@@ -125,6 +125,17 @@ public class ExcelDataUtil {
 		return sheet.getRow(row).getCell(coumn).getStringCellValue();
 	}
 	
+	public void closeWorkBook() throws IOException
+	{
+		try
+		{
+			book.close();	
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
 	
 	
 	

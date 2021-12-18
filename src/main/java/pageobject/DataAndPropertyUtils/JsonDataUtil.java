@@ -15,7 +15,7 @@ public class JsonDataUtil {
 	
 	public ArrayList<Object> getJosnData(String TestScriptName,String testCaseName) throws Exception
 	{
-		String json=this.readFileAsString(System.getProperty("user.dir")+"\\TestData\\TestData.json");
+		String json=this.readFileAsString(System.getProperty("user.dir")+"\\src\\test\\Resources\\TestData.json");
 		ObjectMapper mapper=new ObjectMapper();
 		JsonNode startNode=mapper.readTree(json).get("TestData");		
 		JsonNode TestScriptNode=null;

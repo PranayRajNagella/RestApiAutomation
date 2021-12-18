@@ -82,8 +82,27 @@
           ]
         }
       ]
+    },
+     {
+      "TestScriptName":"GetMembers",
+      "TestCases":
+      [
+        {
+          "TestCaseName":"test_01_GetMembers_ValidInput",
+          "data":
+          [
+            {
+              "page":100,
+              "RunMode":true
+            },
+            {
+              "page":220,
+              "RunMode":true
+            }
+          ]
+        }
+      ]
     }
-    
   ]
   
 }
