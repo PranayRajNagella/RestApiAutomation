@@ -1,108 +1,96 @@
 {
-  "TestData":
-  [
+  "TestData": [
     {
-      "TestScriptName":"TestGetMembers",
-      "TestCases":
-      [
+      "TestScriptName": "TestGetMembers",
+      "TestCases": [
         {
-          "TestCaseName":"test_01_GetMembers",
-          "data":
-          [
+          "TestCaseName": "test_01_GetMembers",
+          "data": [
             {
-              "page":2,
-              "RunMode":true
+              "page": 2,
+              "RunMode": true
             },
             {
-              "page":3,
-              "RunMode":true
+              "page": 3,
+              "RunMode": true
             }
           ]
         },
         {
-          "TestCaseName":"test_02_GetMembers",
-          "data":
-          [
+          "TestCaseName": "test_02_GetMembers",
+          "data": [
             {
-              "page":2,
-              "RunMode":true
+              "page": 2,
+              "RunMode": true
             },
             {
-              "page":3,
-              "RunMode":true
+              "page": 3,
+              "RunMode": true
             }
           ]
         }
       ]
     },
     {
-      "TestScriptName":"TestPostMemeber",
-      "TestCases":
-      [
+      "TestScriptName": "TestPostMemeber",
+      "TestCases": [
         {
-          "TestCaseName":"test_01_postnewmember",
-          "data":
-          [
+          "TestCaseName": "test_01_postnewmember",
+          "data": [
             {
-              "jsonBody":
-                        {
-                        "UserName":"User1",
-                        "Password":"Password1"
-                        },
-              "RunMode":true
+              "jsonBody": {
+                "UserName": "User1",
+                "Password": "Password1"
+              },
+              "RunMode": true
             },
             {
-              "jsonBody":
-                        {
-                        "UserName":"User2",
-                        "Password":"Password2"
-                        },
-              "RunMode":true
+              "jsonBody": {
+                "UserName": "User2",
+                "Password": "Password2"
+              },
+              "RunMode": true
             }
           ]
         },
         {
-          "TestCaseName":"test_02_postExsitingmember",
-          "data":
-          [
+          "TestCaseName": "test_02_postExsitingmember",
+          "data": [
             {
-               "jsonBody": {
-                        "UserName":"User2",
-                        "Password":"Password2"
-                 },
-              "RunMode":true
+              "jsonBody": {
+                "UserName": "User2",
+                "Password": "Password2"
+              },
+              "RunMode": true
             },
             {
-             "jsonBody": {
-                        "UserName":"User2",
-                        "Password":"Password2"
-                 },
-              "RunMode":true
+              "jsonBody": {
+                "UserName": "User2",
+                "Password": "Password2"
+              },
+              "RunMode": true
             }
           ]
         }
       ]
     },
-     {
-      "TestScriptName":"GetMembers",
-      "TestCases":
-      [
+    {
+      "TestScriptName": "GetMembers",
+      "TestCases": [
         {
-          "TestCaseName":"test_01_GetMembers_ValidInput",
-          "data":
-          [
+          "TestCaseName": "test_01_GetMembers_ValidInput",
+          "data": [
             {
-              "page":100,
-              "RunMode":true
+              "page": 100,
+              "RunMode": true
             },
             {
-              "page":220,
-              "RunMode":true
+              "page": 220,
+              "RunMode": true
             }
           ]
         }
       ]
     }
   ]
-  
 }
