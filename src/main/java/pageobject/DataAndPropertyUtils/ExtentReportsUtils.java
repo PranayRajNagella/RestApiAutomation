@@ -10,16 +10,20 @@ import pageobject.restapiUtilites.BaseTest;
 
 public class ExtentReportsUtils{
 	
-	ExtentReports extent = new ExtentReports();
+	static ExtentReports extent ;
 	
-	public ExtentReports setUpExtent()
+	public static ExtentReports setUpExtent()
 	{
+		extent=new ExtentReports();
 		ExtentSparkReporter spark = new ExtentSparkReporter(System.getProperty("user.dir")+"\\src\\test\\Resources\\Results.html");
 		extent.attachReporter(spark);
+		extent.setSystemInfo("userName", System.getProperty("user.name"));
+		extent.setSystemInfo("OS", System.getProperty("os.version"));
 		return extent;
 	}
 	
-	public void extentStatusUpdate(ITestResult result,ExtentTest test)
+	
+	public static void extentStatusUpdate(ITestResult result,ExtentTest test)
 	{
 		switch (result.getStatus()) {
 		case 1:
@@ -37,7 +41,7 @@ public class ExtentReportsUtils{
 		}
 	}
 	
-	public void endReport()
+	public static void endReport()
 	{
 		extent.flush();
 		//extent.

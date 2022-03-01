@@ -13,39 +13,49 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JsonDataUtil {
 
 	
-	public ArrayList<Object> getJosnData(String TestScriptName,String testCaseName) throws Exception
+	public ArrayList<Object> getJsonData(String TestScriptName,String testCaseName) throws Exception
 	{
-		String json=this.readFileAsString(System.getProperty("user.dir")+"\\src\\test\\Resources\\TestData.json");
-		ObjectMapper mapper=new ObjectMapper();
-		JsonNode startNode=mapper.readTree(json).get("TestData");		
-		JsonNode TestScriptNode=null;
-		for(int i=0;i<startNode.size();i++)
+		try
 		{
-			if(startNode.get(i).get("TestScriptName").asText().equalsIgnoreCase(TestScriptName))
+			System.out.println("Indised Second");
+			String json=this.readFileAsString(System.getProperty("user.dir")+"\\src\\test\\Resources\\TestData.json");
+			ObjectMapper mapper=new ObjectMapper();
+			JsonNode startNode=mapper.readTree(json).get("TestData");		
+			JsonNode TestScriptNode=null;
+			for(int i=0;i<startNode.size();i++)
 			{
-				TestScriptNode=startNode.get(i);
-				break;
+				if(startNode.get(i).get("TestScriptName").asText().equalsIgnoreCase(TestScriptName))
+				{
+					TestScriptNode=startNode.get(i);
+					break;
+				}
 			}
-		}
-		JsonNode testCase=TestScriptNode.get("TestCases");
-		JsonNode data=null;
-		for(int i=0;i<testCase.size();i++)
-		{
-			if(testCase.get(i).get("TestCaseName").asText().equalsIgnoreCase(testCaseName))
+			JsonNode testCase=TestScriptNode.get("TestCases");
+			JsonNode data=null;
+			for(int i=0;i<testCase.size();i++)
 			{
-				data=testCase.get(i).get("data");
-				break;
+				if(testCase.get(i).get("TestCaseName").asText().equalsIgnoreCase(testCaseName))
+				{
+					data=testCase.get(i).get("data");
+					break;
+				}
 			}
+			
+			System.out.println("Printing Data");
+			System.out.println(data);
+			
+			ArrayList<Object> dataArray=new ArrayList<>();
+			dataArray=mapper.convertValue(data,new TypeReference<ArrayList<Object>>() {});
+			dataArray.removeIf(n -> this.check(n));
+			return dataArray;
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage().toString());
+			throw e;
+			
 		}
 		
-		System.out.println("Printing Data");
-		System.out.println(data);
 		
-		ArrayList<Object> dataArray=new ArrayList<>();
-		dataArray=mapper.convertValue(data,new TypeReference<ArrayList<Object>>() {});
-		dataArray.removeIf(n -> this.check(n));
-		
-		return dataArray;
 	}
 	
 	
