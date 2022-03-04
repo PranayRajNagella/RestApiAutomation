@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Mar 1, 2022 09:59:11 PM</span></a>
+<a href="#"><span class="badge badge-primary">Mar 4, 2022 07:36:58 PM</span></a>
 </li>
 </ul>
 </div>
@@ -45,6 +45,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
@@ -71,63 +76,23 @@
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
 </li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">getMembers</a>
+</ul>
+</li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="2"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">test_01_postnewmember</p>
-            <p class="text-sm">
-              <span>21:59:12 PM</span> / <span>00:00:00:016</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">test_01_postnewmember</h5>
-<span class='badge badge-success'>03.01.2022 21:59:12</span>
-<span class='badge badge-danger'>03.01.2022 21:59:12</span>
-<span class='badge badge-default'>00:00:00:016</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
-</div>
-<div class="m-t-10 m-l-5"> verying test_01_postnewmember</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:12 PM</td>
-        <td>
-          inside the post test_01
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:12 PM</td>
-        <td>
-          test_01_postnewmember is passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
         <li class="test-item"  status="pass" test-id="1"
           author=""
-          tag=""
+          tag="getMembers"
           device="">
           <div class="test-detail">
-            <p class="name">test_01_GetMembers_ValidInput</p>
+            <p class="name">test_01_GetMemeber</p>
             <p class="text-sm">
-              <span>21:59:12 PM</span> / <span>00:00:03:522</span>
+              <span>19:37:03 PM</span> / <span>00:00:01:946</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -135,13 +100,13 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">test_01_GetMembers_ValidInput</h5>
-<span class='badge badge-success'>03.01.2022 21:59:12</span>
-<span class='badge badge-danger'>03.01.2022 21:59:16</span>
-<span class='badge badge-default'>00:00:03:522</span>
+<h5 class="test-status text-pass">test_01_GetMemeber</h5>
+<span class='badge badge-success'>03.04.2022 19:37:03</span>
+<span class='badge badge-danger'>03.04.2022 19:37:05</span>
+<span class='badge badge-default'>00:00:01:946</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 </div>
-<div class="m-t-10 m-l-5"> verying get valid input</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">getMembers</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
@@ -149,23 +114,16 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:12 PM</td>
+        <td>7:37:03 PM</td>
         <td>
-          {page=100, RunMode=true}
+          test info
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
+        <td>7:37:05 PM</td>
         <td>
-          Actuall Status Code is 200 Expected Statuc Code 200
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          test_01_GetMembers_ValidInput is passed
+          test_01_GetMemeber is passed
         </td>
       </tr>
   </tbody>
@@ -173,14 +131,14 @@
 </div>
           </div>
         </li>
-        <li class="test-item"  status="pass" test-id="3"
+        <li class="test-item"  status="pass" test-id="2"
           author=""
-          tag=""
+          tag="getMembers"
           device="">
           <div class="test-detail">
-            <p class="name">test_01_postnewmember</p>
+            <p class="name">test_01_GetMemeber</p>
             <p class="text-sm">
-              <span>21:59:14 PM</span> / <span>00:00:00:000</span>
+              <span>19:37:05 PM</span> / <span>00:00:00:632</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -188,59 +146,13 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">test_01_postnewmember</h5>
-<span class='badge badge-success'>03.01.2022 21:59:14</span>
-<span class='badge badge-danger'>03.01.2022 21:59:14</span>
-<span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<h5 class="test-status text-pass">test_01_GetMemeber</h5>
+<span class='badge badge-success'>03.04.2022 19:37:05</span>
+<span class='badge badge-danger'>03.04.2022 19:37:06</span>
+<span class='badge badge-default'>00:00:00:632</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 </div>
-<div class="m-t-10 m-l-5"> verying test_01_postnewmember</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:14 PM</td>
-        <td>
-          inside the post test_01
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:14 PM</td>
-        <td>
-          test_01_postnewmember is passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="4"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">test_02_postExsitingmember</p>
-            <p class="text-sm">
-              <span>21:59:14 PM</span> / <span>00:00:00:000</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">test_02_postExsitingmember</h5>
-<span class='badge badge-success'>03.01.2022 21:59:14</span>
-<span class='badge badge-danger'>03.01.2022 21:59:14</span>
-<span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
-</div>
-<div class="m-t-10 m-l-5"> verying test_02_postExsitingmember</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">getMembers</span></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
@@ -248,221 +160,16 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:14 PM</td>
+        <td>7:37:05 PM</td>
         <td>
-          inside the post test_02
+          test info
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:14 PM</td>
+        <td>7:37:06 PM</td>
         <td>
-          test_02_postExsitingmember is passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="5"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">test_02_postExsitingmember</p>
-            <p class="text-sm">
-              <span>21:59:14 PM</span> / <span>00:00:00:000</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">test_02_postExsitingmember</h5>
-<span class='badge badge-success'>03.01.2022 21:59:14</span>
-<span class='badge badge-danger'>03.01.2022 21:59:14</span>
-<span class='badge badge-default'>00:00:00:000</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
-</div>
-<div class="m-t-10 m-l-5"> verying test_02_postExsitingmember</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:14 PM</td>
-        <td>
-          inside the post test_02
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:14 PM</td>
-        <td>
-          test_02_postExsitingmember is passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="6"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">test_01_GetMembers_ValidInput</p>
-            <p class="text-sm">
-              <span>21:59:16 PM</span> / <span>00:00:00:250</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">test_01_GetMembers_ValidInput</h5>
-<span class='badge badge-success'>03.01.2022 21:59:16</span>
-<span class='badge badge-danger'>03.01.2022 21:59:16</span>
-<span class='badge badge-default'>00:00:00:250</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
-</div>
-<div class="m-t-10 m-l-5"> verying get valid input</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          {page=220, RunMode=true}
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          Actuall Status Code is 200 Expected Statuc Code 200
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          test_01_GetMembers_ValidInput is passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="7"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">test_02_GetMembers_ValidInput</p>
-            <p class="text-sm">
-              <span>21:59:16 PM</span> / <span>00:00:00:281</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">test_02_GetMembers_ValidInput</h5>
-<span class='badge badge-success'>03.01.2022 21:59:16</span>
-<span class='badge badge-danger'>03.01.2022 21:59:16</span>
-<span class='badge badge-default'>00:00:00:281</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
-</div>
-<div class="m-t-10 m-l-5"> verying get valid input</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          {page=100, RunMode=true}
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          Actuall Status Code is 200 Expected Statuc Code 200
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          test_02_GetMembers_ValidInput is passed
-        </td>
-      </tr>
-  </tbody>
-</table>
-</div>
-          </div>
-        </li>
-        <li class="test-item"  status="pass" test-id="8"
-          author=""
-          tag=""
-          device="">
-          <div class="test-detail">
-            <p class="name">test_02_GetMembers_ValidInput</p>
-            <p class="text-sm">
-              <span>21:59:16 PM</span> / <span>00:00:00:250</span>
-              <span class="badge pass-bg log float-right">Pass</span>
-            </p>
-          </div>
-          <div class="test-contents d-none">
-<div class="detail-head">
-<div class="p-v-10">
-<div class="info">
-<h5 class="test-status text-pass">test_02_GetMembers_ValidInput</h5>
-<span class='badge badge-success'>03.01.2022 21:59:16</span>
-<span class='badge badge-danger'>03.01.2022 21:59:16</span>
-<span class='badge badge-default'>00:00:00:250</span>
-&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
-</div>
-<div class="m-t-10 m-l-5"> verying get valid input</div>
-</div>
-</div><div class="detail-body mt-4">
-<table class="table table-sm">
-  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
-  <tbody>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          {page=220, RunMode=true}
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          Actuall Status Code is 200 Expected Statuc Code 200
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>9:59:16 PM</td>
-        <td>
-          test_02_GetMembers_ValidInput is passed
+          test_01_GetMemeber is passed
         </td>
       </tr>
   </tbody>
@@ -479,24 +186,80 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="container-fluid p-4 view dashboard-view">
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+</span>
+<p class="name">getMembers</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>getMembers</h4>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:37:03 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>test_01_GetMemeber</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>19:37:05 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>test_01_GetMemeber</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
 <div class="row">
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Mar 1, 2022 09:59:11 PM</h3>
+<h3>Mar 4, 2022 07:36:58 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Mar 1, 2022 09:59:16 PM</h3>
+<h3>Mar 4, 2022 07:37:06 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>8</h3>
+<h3>2</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -519,7 +282,7 @@
 </div>
 <div class="card-footer">
 <div><small data-tooltip='100%'>
-<b>8</b> tests passed
+<b>2</b> tests passed
 </small>
 </div>
 <div>
@@ -541,10 +304,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='60%'><b>12</b> events passed</small></div>
+<div><small data-tooltip='50%'><b>2</b> events passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> events failed,
-<b data-tooltip='%'>8</b> others
+<b data-tooltip='%'>2</b> others
 </small>
 </div>
 </div>
@@ -560,10 +323,27 @@
 </div></div>
 <script>
 var timeline = {
-"test_01_postnewmember":0.016,"test_01_GetMembers_ValidInput":3.522,"test_01_postnewmember":0,"test_02_postExsitingmember":0,"test_02_postExsitingmember":0,"test_01_GetMembers_ValidInput":0.25,"test_02_GetMembers_ValidInput":0.281,"test_02_GetMembers_ValidInput":0.25
+"test_01_GetMemeber":1.946,"test_01_GetMemeber":0.632
 };
 </script>
 <div class="row">
+<div class="col-md-4 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>getMembers</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 <div class="col-md-4 sysenv-container">
 <div class="card">
 <div class="card-header"><p>System/Environment</p></div>
@@ -587,7 +367,7 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 8,
+passParent: 2,
 failParent: 0,
 warningParent: 0,
 skipParent: 0,
@@ -604,11 +384,11 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 12,
+passEvents: 2,
 failEvents: 0,
 warningEvents: 0,
 skipEvents: 0,
-infoEvents: 8
+infoEvents: 2
 };
 </script>        </div>
       </div>

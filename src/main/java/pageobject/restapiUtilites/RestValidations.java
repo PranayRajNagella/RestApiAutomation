@@ -30,12 +30,13 @@ public class RestValidations{
 		{
 			Assert.assertTrue(response.asString().contains(matchText));
 		}
-		catch (Error e)
+		catch (Throwable e)
 		{
-			
+			throw e;
 		}
-			
 	}
+
+
 	
 	
 

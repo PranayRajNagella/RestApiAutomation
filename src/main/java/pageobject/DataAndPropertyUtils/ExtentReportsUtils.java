@@ -30,7 +30,7 @@ public class ExtentReportsUtils{
 			test.pass(result.getName()+" is passed");
 			break;
 		case 2:
-			test.fail(result.getName()+" is falied due to following reason");
+			test.fail(result.getName()+" is failed due to following reason");
 			test.fail(result.getThrowable());
 			break;
 		case 3:
