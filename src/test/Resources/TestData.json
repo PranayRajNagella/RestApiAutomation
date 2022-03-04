@@ -91,6 +91,24 @@
           ]
         }
       ]
+    },
+    {
+      "TestScriptName": "GetCustomTest",
+      "TestCases": [
+        {
+          "TestCaseName": "test_01_GetMemeber",
+          "data": [
+            {
+              "page": 100,
+              "RunMode": true
+            },
+            {
+              "page": 220,
+              "RunMode": true
+            }
+          ]
+        }
+      ]
     }
   ]
 }

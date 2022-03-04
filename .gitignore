@@ -25,3 +25,5 @@ hs_err_pid*
 /.classpath
 /.project
 /test-output/
+/logger.txt
+/Resources/Results.html
