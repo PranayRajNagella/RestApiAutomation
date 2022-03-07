@@ -38,7 +38,7 @@ public class GetCustomTest extends BaseTest {
     }
 
     @AfterMethod()
-    public void afterMethod(ITestResult result)
+    public void afterMethod(ITestResult result,Method M)
     {
         ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getReporter());
         ExtentReportsUtils.endReport();

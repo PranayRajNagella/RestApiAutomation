@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="5" parallel="classes">
-  <test name="Test">
-    <classes>
-    <!--   <class name="pageObject.restTests.TestGetMembers"/> -->
-     <!-- <class name="pageObject.restTests.TestPostMemeber"/>
-      <class name="pageObject.restTests.GetMembers"/>-->
-      <class name="pageObject.restTests.GetCustomTest"/>
-    </classes>
-  </test> <!-- Test -->
+<suite name="Suite">
+  <suite-files>
+    <suite-file path="testSuites/Regression.xml"></suite-file>
+    <suite-file path="testSuites/TestResultUpdate.xml"></suite-file>
+  </suite-files>
 </suite> <!-- Suite -->
