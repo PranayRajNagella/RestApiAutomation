@@ -58,7 +58,6 @@ public class GetMembers extends BaseTest {
 		}
 		else
 		{
-			System.out.println(" Setting the count to zero from after tests");
 			retry.setCount(0);
 		}
 		ExtentReportsUtils.endReport();
@@ -81,8 +80,8 @@ public class GetMembers extends BaseTest {
 					"<div> MTB-1457 -verify get member Status line for valid input"));
 			Factory.getFactory().getReporter().info(datamap.toString());
 			Response=httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
-		//	if(!restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter()))
-			if(Integer.parseInt(datamap.get("page").toString())==220)
+			if(!restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter()))
+		//	if(Integer.parseInt(datamap.get("page").toString())==220)
 			{
 				passedResults.remove("MTB-1456");
 				failedResults.add("MTB-1456");
@@ -125,8 +124,8 @@ public class GetMembers extends BaseTest {
 			Factory.getFactory().setReporter(report.createTest("test_02_GetMembers_ValidInput for "+datamap.get("page").toString(), " verifying get valid input"));
 			Factory.getFactory().getReporter().info(datamap.toString());
 			Response=httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
-		//	if(!restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter()))
-			if(Integer.parseInt(datamap.get("page").toString())==220 && (retry.getTriedCount()==0 || retry.getTriedCount()==1))
+			if(!restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter()))
+		//		if(Integer.parseInt(datamap.get("page").toString())==220 && (retry.getTriedCount()==0 || retry.getTriedCount()==1))
 			{
 				System.err.println("Failing the test Cases");
 				result=false;

@@ -1,18 +1,8 @@
 package pageobject.retryAnalyser;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentReporter;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
-import org.testng.Reporter;
-import pageobject.DataAndPropertyUtils.ExtentReportsUtils;
-import pageobject.factory.Factory;
-import pageobject.restapiUtilites.BaseTest;
 
-//import static pageobject.restapiUtilites.BaseTest.maxTry;
-import static pageobject.restapiUtilites.BaseTest.report;
-import static pageobject.restapiUtilites.RestBase.httpDelete;
 
 public class RetryTestCases implements IRetryAnalyzer {
 
