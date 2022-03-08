@@ -6,6 +6,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+import org.testng.Reporter;
 import pageobject.restapiUtilites.BaseTest;
 
 public class ExtentReportsUtils{
@@ -34,7 +35,7 @@ public class ExtentReportsUtils{
 			test.fail(result.getThrowable());
 			break;
 		case 3:
-			test.skip(result.getTestName()+" got Skipped");
+			test.skip(result.getName()+" got Skipped");
 			break;
 		default:
 			break;
@@ -44,7 +45,6 @@ public class ExtentReportsUtils{
 	public static void endReport()
 	{
 		extent.flush();
-		//extent.
 	}
 
 }
