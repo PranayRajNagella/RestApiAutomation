@@ -1,13 +1,10 @@
 package pageobject.DataAndPropertyUtils;
 
-import org.testng.ITestResult;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-
-import org.testng.Reporter;
-import pageobject.restapiUtilites.BaseTest;
+import org.testng.ITestResult;
+import pageobject.factory.Factory;
 
 public class ExtentReportsUtils{
 	
@@ -28,14 +25,16 @@ public class ExtentReportsUtils{
 	{
 		switch (result.getStatus()) {
 		case 1:
-			test.pass(result.getName()+" is passed");
+			Factory.getFactory().getExtentObject().pass(result.getName()+" is passed");
+			Factory.getFactory().removeReport();
 			break;
 		case 2:
-			test.fail(result.getName()+" is failed due to following reason");
-			test.fail(result.getThrowable());
+			Factory.getFactory().getExtentObject().fail(result.getName()+" is failed due to following reason");
+			Factory.getFactory().getExtentObject().fail(result.getThrowable());
+			Factory.getFactory().removeReport();
 			break;
 		case 3:
-			test.skip(result.getName()+" got Skipped");
+			Factory.getFactory().getExtentObject().skip(result.getName()+" got Skipped");
 			break;
 		default:
 			break;

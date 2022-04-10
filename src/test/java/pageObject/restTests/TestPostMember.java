@@ -1,25 +1,23 @@
 package pageObject.restTests;
 
-import java.lang.reflect.Method;
-import java.util.*;
-
+import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import io.restassured.response.Response;
 import pageobject.DataAndPropertyUtils.ExtentReportsUtils;
 import pageobject.DataAndPropertyUtils.TestDataProvider;
 import pageobject.DataAndPropertyUtils.TestResultUtility;
 import pageobject.DataAndPropertyUtils.Utility;
 import pageobject.factory.Factory;
 import pageobject.restapiUtilites.BaseTest;
-import pageobject.retryAnalyser.RetryTestCases;
 
-public class TestPostMemeber extends BaseTest {
+import java.lang.reflect.Method;
+import java.util.*;
+
+public class TestPostMember extends BaseTest {
 	
 	public Map<String,Object> pathParams=new HashMap<String,Object>();
 	public Map<String,Object> queryParams=new HashMap<String,Object>();
@@ -51,13 +49,16 @@ public class TestPostMemeber extends BaseTest {
 	{
 		passedResults.clear();
 		failedResults.clear();
-		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getReporter());
-		ExtentReportsUtils.endReport();
+		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getExtentObject());
 		if(result.getStatus()!=1)
 		{
-			System.out.println(retry.getTriedCount()+" psot Members");
-			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getReporter(), result.getName());
+			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());
 		}
+		else
+		{
+			retry.setCount(0);
+		}
+		ExtentReportsUtils.endReport();
 	}
 
 	/**
@@ -70,8 +71,8 @@ public class TestPostMemeber extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1460,MTB-1461");
 	    try
 		{
-			Factory.getFactory().setReporter(report.createTest("test_01_postnewmember", " verying test_01_postnewmember"));
-			Factory.getFactory().getReporter().info("Hello test_01_postnewmember number");
+			Factory.getFactory().setExtentObject(report.createTest("test_01_postnewmember", " verying test_01_postnewmember"));
+			Factory.getFactory().getExtentObject().info("Hello test_01_postnewmember number");
 			if(!false)
 			{
 				passedResults.remove("MTB-1461");
@@ -79,11 +80,12 @@ public class TestPostMemeber extends BaseTest {
 			}
 			TestResultUtility.writePassedTestResult(passedResults);
 			TestResultUtility.writeFailedTestResult(failedResults);
+			Assert.assertTrue(true,"post new member failed");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			TestResultUtility.writeFailedTestResult(TestResultUtility.setResults("MTB-1460,MTB-1461"));
-			Factory.getFactory().getReporter().fail(e);
+			Factory.getFactory().getExtentObject().fail(e);
 			Assert.fail(e.toString());
 		}
 	}
@@ -99,8 +101,8 @@ public class TestPostMemeber extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1462,MTB-1463");
 		try
 		{
-			Factory.getFactory().setReporter(report.createTest("test_02_postExsitingmember", " verying test_02_postExsitingmember"));
-			Factory.getFactory().getReporter().info("inside the post test_02");
+			Factory.getFactory().setExtentObject(report.createTest("test_02_postExsitingmember", " verying test_02_postExsitingmember"));
+			Factory.getFactory().getExtentObject().info("inside the post test_02");
 			if(!false)
 			{
 				passedResults.remove("MTB-1462");
@@ -108,12 +110,13 @@ public class TestPostMemeber extends BaseTest {
 			}
 			TestResultUtility.writePassedTestResult(passedResults);
 			TestResultUtility.writeFailedTestResult(failedResults);
+			Assert.assertTrue(true,"post new member failed");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			TestResultUtility.writeFailedTestResult(TestResultUtility.setResults("MTB-1462,MTB-1463"));
-			 Factory.getFactory().getReporter().fail(e);
-			 Assert.fail(e.toString());
+			Factory.getFactory().getExtentObject().fail(e);
+			Assert.fail(e.toString());
 		}
 	}
 

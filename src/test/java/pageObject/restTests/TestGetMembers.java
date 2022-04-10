@@ -1,21 +1,21 @@
 package pageObject.restTests;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 import io.restassured.response.Response;
+import org.testng.ITestResult;
+import org.testng.annotations.*;
 import pageobject.DataAndPropertyUtils.ExtentReportsUtils;
 import pageobject.DataAndPropertyUtils.TestCaseName;
 import pageobject.DataAndPropertyUtils.TestDataProvider;
+import pageobject.DataAndPropertyUtils.Utility;
 import pageobject.factory.Factory;
+import pageobject.factory.RestFactory;
 import pageobject.restapiUtilites.BaseTest;
+import pageobject.restapiUtilites.RestBase;
 import pageobject.restapiUtilites.RestValidations;
+
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -25,7 +25,14 @@ public class TestGetMembers extends BaseTest{
 	public Map<String,Object> queryParams=new HashMap<String,Object>();
 	public Map<String,Object> headers=new HashMap<String,Object>();
 	Response Response;
-	
+
+	@BeforeClass()
+	public void beforeClass()
+	{
+		RestFactory.getRestFactory().setRestBase(new RestBase());
+		RestFactory.getRestFactory().getRestBase();
+	}
+
 	@BeforeMethod()
 	public void BeforMethod()
 	{
@@ -33,12 +40,26 @@ public class TestGetMembers extends BaseTest{
 		queryParams.clear();
 		headers.clear();
 	}
-	
+
+	@AfterClass
+	public void afterClass()
+	{
+		RestFactory.getRestFactory().removeResBase();
+	}
 	
 	@AfterMethod()
 	public void AfterMethod(ITestResult result)
 	{
-		ExtentReportsUtils.extentStatusUpdate(result,test);
+
+		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getExtentObject());
+		if(result.getStatus()!=1)
+		{
+			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());
+		}
+		else
+		{
+			retry.setCount(0);
+		}
 		ExtentReportsUtils.endReport();
 	}
 	
@@ -51,8 +72,8 @@ public class TestGetMembers extends BaseTest{
 	@Test(dataProvider="TestData",groups={"ApiTest","Regression","Sanity"})
 	public void test_01_GetMembers(Map<String,Object> data)
 	{
-		Factory.getFactory().setReporter(report.createTest("test_01_GetMembers", " GetMembers_1 get valid input").assignCategory("GET_MEMBERS"));   
-		Factory.getFactory().getReporter().info(data.toString());
+		Factory.getFactory().setExtentObject(report.createTest("test_01_GetMembers", " GetMembers_1 get valid input").assignCategory("GET_MEMBERS"));
+		Factory.getFactory().getExtentObject().info(data.toString());
 		System.out.println("inside the First Test");
 		try
 		{
@@ -60,7 +81,7 @@ public class TestGetMembers extends BaseTest{
 			queryParams.put("page",2);
 			Response=httpGet("https://reqres.in/api","users", headers, pathParams, queryParams);
 			System.out.println(Response.asString());
-			restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter());
+			RestValidations.StatusCodeValidation(Response, 200);
 			System.out.println(Response.prettyPrint());
 		}
 		catch(Exception e)
@@ -75,8 +96,8 @@ public class TestGetMembers extends BaseTest{
 	public void test_02_GetMembers(Map<String,Object> data)
 	{
 		
-		Factory.getFactory().setReporter(report.createTest("test_02_GetMembers", " GetMembers_1 get valid input").assignCategory("GET_MEMBERS"));   
-		Factory.getFactory().getReporter().info(data.toString());
+		Factory.getFactory().setExtentObject(report.createTest("test_02_GetMembers", " GetMembers_1 get valid input").assignCategory("GET_MEMBERS"));
+		Factory.getFactory().getExtentObject().info(data.toString());
 		System.out.println("Inside the Second Test");
 		System.out.println(data);
 	}
@@ -85,8 +106,8 @@ public class TestGetMembers extends BaseTest{
 	public void test_03_GetMembers(Map<String,Object> data)
 	{
 		
-		Factory.getFactory().setReporter(report.createTest("test_03_GetMembers", " GetMembers_1 get valid input").assignCategory("GET_MEMBERS"));   
-		Factory.getFactory().getReporter().info(data.toString());
+		Factory.getFactory().setExtentObject(report.createTest("test_03_GetMembers", " GetMembers_1 get valid input").assignCategory("GET_MEMBERS"));
+		Factory.getFactory().getExtentObject().info(data.toString());
 		System.out.println("Inside third one Second Test");
 		System.out.println(data);
 	}
