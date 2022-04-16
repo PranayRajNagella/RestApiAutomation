@@ -31,3 +31,4 @@ hs_err_pid*
 /src/main/java/pageobject/retryAnalyser/TestCounter.java
 /src/main/java/pageobject/retryAnalyser/TestExecutor.java
 /src/test/Resources/Results.html
+
