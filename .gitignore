@@ -27,3 +27,8 @@ hs_err_pid*
 /test-output/
 /logger.txt
 /Resources/Results.html
+/src/test/java/pageObject/resultUpdater/TestListRemoval.java
+/src/main/java/pageobject/retryAnalyser/TestCounter.java
+/src/main/java/pageobject/retryAnalyser/TestExecutor.java
+/src/test/Resources/Results.html
+

@@ -32,7 +32,7 @@
       ]
     },
     {
-      "TestScriptName": "TestPostMemeber",
+      "TestScriptName": "TestPostMember",
       "TestCases": [
         {
           "TestCaseName": "test_01_postnewmember",

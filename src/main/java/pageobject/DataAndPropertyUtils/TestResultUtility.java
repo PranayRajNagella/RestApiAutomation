@@ -1,14 +1,10 @@
 package pageobject.DataAndPropertyUtils;
 
-import org.testng.annotations.Factory;
-import org.testng.annotations.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import static pageobject.restapiUtilites.BaseTest.report;
 
 public class TestResultUtility {
 
