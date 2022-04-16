@@ -1,5 +1,6 @@
 package pageObject.restTests;
 
+import com.aventstack.extentreports.ExtentTest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
@@ -26,6 +27,7 @@ public class GetCustomTest extends BaseTest {
     RequestSpecification respec;
     List<String> passedTestCase=new ArrayList<String>();
     List<String> failedTestCase=new ArrayList<String>();
+    private ExtentTest test;
 
 
     @DataProvider(name="data")
@@ -60,7 +62,7 @@ public class GetCustomTest extends BaseTest {
     {
         passedTestCase.clear();
         failedTestCase.clear();
-        ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getExtentObject());
+        ExtentReportsUtils.extentStatusUpdate(result);
         if(result.getStatus()!=1)
         {
             Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());
@@ -78,7 +80,8 @@ public class GetCustomTest extends BaseTest {
         boolean result=true;
         try {
             passedTestCase= TestResultUtility.setResults("MTB-3001,MTB-4001");
-            Factory.getFactory().setExtentObject(report.createTest("test_01_GetMemeber").assignCategory("getMembers"));
+            test=report.createTest("test_01_GetMemeber").assignCategory("getMembers");
+            Factory.getFactory().setExtentObject(test);
             Factory.getFactory().getExtentObject().info("test info");
             System.out.println(jsonData);
             Response response=RestFactory.getRestFactory().getRestBase().httpGet(respec,Property.readPropetyValue("GetMembers"), pathParameters, queryParameters);

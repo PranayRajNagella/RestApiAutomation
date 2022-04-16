@@ -1,5 +1,6 @@
 package pageObject.restTests;
 
+import com.aventstack.extentreports.ExtentTest;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -23,6 +24,7 @@ public class GetMembers extends BaseTest {
 	Response Response;
 	List<String> passedResults=new ArrayList<>();
 	List<String> failedResults =new ArrayList<>();
+	private ExtentTest test;
 	
 	@DataProvider(name="TestData")
 	public Iterator<Object> getTestData(Method M) throws Exception
@@ -57,7 +59,7 @@ public class GetMembers extends BaseTest {
 	{
 		passedResults.clear();
 		failedResults.clear();
-		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getExtentObject());
+		ExtentReportsUtils.extentStatusUpdate(result);
 		if(result.getStatus()!=1)
 		{
 			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());
@@ -82,8 +84,9 @@ public class GetMembers extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1456,MTB-1457");
 		try
 		{
-			Factory.getFactory().setExtentObject(report.createTest("test_01_GetMembers_ValidInput for "+datamap.get("page").toString(), "MTB-1456 -verify get member Status Code for valid input" +
-					"<div> MTB-1457 -verify get member Status line for valid input"));
+			test=report.createTest("test_01_GetMembers_ValidInput for "+datamap.get("page").toString(), "MTB-1456 -verify get member Status Code for valid input" +
+					"<div> MTB-1457 -verify get member Status line for valid input").assignCategory("GET MEMBERS");
+			Factory.getFactory().setExtentObject(test);
 			Factory.getFactory().getExtentObject().info(datamap.toString());
 			Response=RestFactory.getRestFactory().getRestBase().httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
 			if(!RestValidations.StatusCodeValidation(Response, 200))
@@ -108,7 +111,8 @@ public class GetMembers extends BaseTest {
 		}
 		catch (Exception e) {
 			TestResultUtility.writeFailedTestResult(TestResultUtility.setResults("MTB-1456,MTB-1457"));
-			e.getStackTrace();
+			System.out.println("prtinting stack tarce");
+			e.printStackTrace();
 			Factory.getFactory().getExtentObject().fail(e);
 			Assert.fail(e.toString());
 		}
@@ -127,7 +131,8 @@ public class GetMembers extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1458,MTB-1459");
 		try
 		{
-			Factory.getFactory().setExtentObject(report.createTest("test_02_GetMembers_ValidInput for "+datamap.get("page").toString(), " verifying get valid input"));
+			test=report.createTest("test_02_GetMembers_ValidInput for "+datamap.get("page").toString(), " verifying get valid input").assignCategory("GET MEMBERS");
+			Factory.getFactory().setExtentObject(test);
 			Factory.getFactory().getExtentObject().info(datamap.toString());
 			Response=RestFactory.getRestFactory().getRestBase().httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
 			if(!RestValidations.StatusCodeValidation(Response, 200))
@@ -157,7 +162,7 @@ public class GetMembers extends BaseTest {
 		}
 		catch (Exception e) {
 			TestResultUtility.writeFailedTestResult(TestResultUtility.setResults("MTB-1458,MTB-1459"));
-			e.getStackTrace();
+			e.printStackTrace();
 			Factory.getFactory().getExtentObject().fail(e);
 			Assert.fail(e.toString());
 		}

@@ -5,7 +5,7 @@
     <classes>
      <!-- <class name="pageObject.restTests.TestGetMembers"/>-->
       <class name="pageObject.restTests.TestPostMember"/>
-<!--      <class name="pageObject.restTests.GetMembers"/>-->
+      <class name="pageObject.restTests.GetMembers"/>
       <class name="pageObject.restTests.GetCustomTest"/>
     </classes>
   </test> <!-- Test -->

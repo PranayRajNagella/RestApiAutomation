@@ -1,5 +1,6 @@
 package pageObject.restTests;
 
+import com.aventstack.extentreports.ExtentTest;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -24,6 +25,7 @@ public class TestPostMember extends BaseTest {
 	public Map<String,Object> headers=new HashMap<String,Object>();
 	List<String> passedResults=new ArrayList<>();
 	List<String> failedResults=new ArrayList<>();
+	private ExtentTest test;
 	Response Response;
 	
 	
@@ -49,7 +51,7 @@ public class TestPostMember extends BaseTest {
 	{
 		passedResults.clear();
 		failedResults.clear();
-		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getExtentObject());
+		ExtentReportsUtils.extentStatusUpdate(result);
 		if(result.getStatus()!=1)
 		{
 			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());
@@ -71,7 +73,8 @@ public class TestPostMember extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1460,MTB-1461");
 	    try
 		{
-			Factory.getFactory().setExtentObject(report.createTest("test_01_postnewmember", " verying test_01_postnewmember"));
+			test=report.createTest("test_01_postnewmember", " verying test_01_postnewmember").assignCategory("POST MEMBERS");
+			Factory.getFactory().setExtentObject(test);
 			Factory.getFactory().getExtentObject().info("Hello test_01_postnewmember number");
 			if(!false)
 			{
@@ -101,7 +104,8 @@ public class TestPostMember extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1462,MTB-1463");
 		try
 		{
-			Factory.getFactory().setExtentObject(report.createTest("test_02_postExsitingmember", " verying test_02_postExsitingmember"));
+			test=report.createTest("test_02_postExsitingmember", " verying test_02_postExsitingmember").assignCategory("POST MEMBERS");
+			Factory.getFactory().setExtentObject(test);
 			Factory.getFactory().getExtentObject().info("inside the post test_02");
 			if(!false)
 			{

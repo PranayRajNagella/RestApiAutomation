@@ -1,7 +1,6 @@
 package pageobject.DataAndPropertyUtils;
 
 import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.testng.ITestResult;
 import pageobject.factory.Factory;
@@ -21,7 +20,7 @@ public class ExtentReportsUtils{
 	}
 	
 	
-	public static void extentStatusUpdate(ITestResult result,ExtentTest test)
+	public static void extentStatusUpdate(ITestResult result)
 	{
 		switch (result.getStatus()) {
 		case 1:

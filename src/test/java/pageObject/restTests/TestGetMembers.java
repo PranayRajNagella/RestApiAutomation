@@ -51,7 +51,7 @@ public class TestGetMembers extends BaseTest{
 	public void AfterMethod(ITestResult result)
 	{
 
-		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getExtentObject());
+		ExtentReportsUtils.extentStatusUpdate(result);
 		if(result.getStatus()!=1)
 		{
 			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());

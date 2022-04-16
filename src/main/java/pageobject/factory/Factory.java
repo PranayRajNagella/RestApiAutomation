@@ -5,7 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 public class Factory {
 
-    ThreadLocal<ExtentTest> reporter = new ThreadLocal<ExtentTest>();
+    private static ThreadLocal<ExtentTest> ExtentTest = new ThreadLocal<ExtentTest>();
     private static Factory factory;
     private Factory() {
     }
@@ -17,16 +17,23 @@ public class Factory {
         return factory;
     }
 
-	public void setExtentObject(ExtentTest test) {
-		reporter.set(test);
+	public synchronized void setExtentObject(ExtentTest test) {
+		ExtentTest.set(test);
 	}
 
     public synchronized ExtentTest getExtentObject() {
-        return reporter.get();
+        synchronized (ExtentTest) {
+            try {
+                ExtentTest.wait(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return ExtentTest.get();
     }
 
-    public void removeReport() {
-        reporter.remove();
+    public synchronized void removeReport() {
+        ExtentTest.remove();
     }
 
 }

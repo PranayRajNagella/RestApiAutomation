@@ -18,20 +18,18 @@ public class ExtentListners extends BaseTest implements ITestListener{
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		// TODO Auto-generated method stub
-		
+		Factory.getFactory().getExtentObject().pass(result.getMethod().getMethodName());
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		// TODO Auto-generated method stub
-		
+		Factory.getFactory().getExtentObject().fail(result.getMethod().getMethodName());
+		Factory.getFactory().getExtentObject().fail(result.getMethod().getMethodName()+" failed due to reason "+result.getThrowable());
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		// TODO Auto-generated method stub
-		
+		Factory.getFactory().getExtentObject().skip(result.getMethod().getMethodName());
 	}
 
 	@Override
