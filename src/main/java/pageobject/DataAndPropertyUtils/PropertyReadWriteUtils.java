@@ -1,5 +1,8 @@
 package pageobject.DataAndPropertyUtils;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+
 import java.io.FileInputStream;
 import java.util.Properties;
 
@@ -26,4 +29,5 @@ public class PropertyReadWriteUtils {
 	{
 		prop.setProperty(key, value);
 	}
+
 }

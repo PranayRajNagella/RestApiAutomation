@@ -17,7 +17,6 @@ public class JsonDataUtil {
 	{
 		try
 		{
-			System.out.println("Indised Second");
 			String json=this.readFileAsString(System.getProperty("user.dir")+"\\src\\test\\Resources\\TestData.json");
 			ObjectMapper mapper=new ObjectMapper();
 			JsonNode startNode=mapper.readTree(json).get("TestData");		
@@ -40,10 +39,6 @@ public class JsonDataUtil {
 					break;
 				}
 			}
-			
-			System.out.println("Printing Data");
-			System.out.println(data);
-			
 			ArrayList<Object> dataArray=new ArrayList<>();
 			dataArray=mapper.convertValue(data,new TypeReference<ArrayList<Object>>() {});
 			dataArray.removeIf(n -> this.check(n));
@@ -52,7 +47,6 @@ public class JsonDataUtil {
 		catch (Exception e) {
 			System.out.println(e.getMessage().toString());
 			throw e;
-			
 		}
 		
 		
