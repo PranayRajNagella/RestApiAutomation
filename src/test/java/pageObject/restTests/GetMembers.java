@@ -1,24 +1,20 @@
 package pageObject.restTests;
 
-import java.lang.reflect.Method;
-import java.util.*;
-
+import com.aventstack.extentreports.ExtentTest;
+import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-import com.aventstack.extentreports.ExtentTest;
-
-import io.restassured.response.Response;
+import org.testng.annotations.*;
 import pageobject.DataAndPropertyUtils.*;
 import pageobject.factory.Factory;
+import pageobject.factory.RestFactory;
 import pageobject.restapiUtilites.BaseTest;
-import pageobject.retryAnalyser.RetryTestCases;
+import pageobject.restapiUtilites.RestBase;
+import pageobject.restapiUtilites.RestValidations;
 
+import java.lang.reflect.Method;
+import java.util.*;
 
 public class GetMembers extends BaseTest {
 	
@@ -28,15 +24,22 @@ public class GetMembers extends BaseTest {
 	Response Response;
 	List<String> passedResults=new ArrayList<>();
 	List<String> failedResults =new ArrayList<>();
-	
+	private ExtentTest test;
+
 	@DataProvider(name="TestData")
 	public Iterator<Object> getTestData(Method M) throws Exception
 	{
 		ArrayList<Object> datalist=JSD.getJsonData(this.getClass().getSimpleName(),TestDataProvider.getMethodName(M));
 		return datalist.listIterator();
 	}
-	
-	
+
+	@BeforeClass()
+	public void beforeClass()
+	{
+		RestFactory.getRestFactory().setRestBase(new RestBase());
+	}
+
+
 	@BeforeMethod(groups={"ApiTest","Regression","Sanity"},alwaysRun = true)
 	public void BeforMethod()
 	{
@@ -44,17 +47,22 @@ public class GetMembers extends BaseTest {
 		queryParams.clear();
 		headers.clear();
 	}
-	
+
+	@AfterClass
+	public void afterClass()
+	{
+		RestFactory.getRestFactory().removeResBase();
+	}
 	
 	@AfterMethod(groups={"ApiTest","Regression","Sanity"},alwaysRun = true)
 	public void AfterMethod(ITestResult result,Method M)
 	{
 		passedResults.clear();
 		failedResults.clear();
-		ExtentReportsUtils.extentStatusUpdate(result,Factory.getFactory().getReporter());
+		ExtentReportsUtils.extentStatusUpdate(result);
 		if(result.getStatus()!=1)
 		{
-			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getReporter(), result.getName());
+			Utility.removeReport(retry.getTriedCount(),report,Factory.getFactory().getExtentObject(), result.getName());
 		}
 		else
 		{
@@ -76,11 +84,12 @@ public class GetMembers extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1456,MTB-1457");
 		try
 		{
-			Factory.getFactory().setReporter(report.createTest("test_01_GetMembers_ValidInput for "+datamap.get("page").toString(), "MTB-1456 -verify get member Status Code for valid input" +
-					"<div> MTB-1457 -verify get member Status line for valid input"));
-			Factory.getFactory().getReporter().info(datamap.toString());
-			Response=httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
-			if(!restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter()))
+			test=report.createTest("test_01_GetMembers_ValidInput for "+datamap.get("page").toString(), "MTB-1456 -verify get member Status Code for valid input" +
+					"<div> MTB-1457 -verify get member Status line for valid input").assignCategory("GET MEMBERS");
+			Factory.getFactory().setExtentObject(test);
+			Factory.getFactory().getExtentObject().info(datamap.toString());
+			Response=RestFactory.getRestFactory().getRestBase().httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
+			if(!RestValidations.StatusCodeValidation(Response, 200))
 		//	if(Integer.parseInt(datamap.get("page").toString())==220)
 			{
 				passedResults.remove("MTB-1456");
@@ -88,22 +97,23 @@ public class GetMembers extends BaseTest {
 				result=false;
 			}
 
-			if(!restValidater.checkStatusLine(Response,"HTTP/1.1 200 OK"))
+			if(!RestValidations.checkStatusLine(Response,"HTTP/1.1 200 OK"))
 			{
 				Reporter.log(passedResults+" before removing");
 				result=false;
 				passedResults.remove("MTB-1457");
 				failedResults.add("MTB-1457");
 			}
-			Factory.getFactory().getReporter().info("passed Test Cases "+passedResults +"<div> failed Test Cases is "+ failedResults);
+			Factory.getFactory().getExtentObject().info("passed Test Cases "+passedResults +"<div> failed Test Cases is "+ failedResults);
 			TestResultUtility.writePassedTestResult(passedResults);
 			TestResultUtility.writeFailedTestResult(failedResults);
 			Assert.assertTrue(result,"Failed GetMember Valid Input");
 		}
 		catch (Exception e) {
 			TestResultUtility.writeFailedTestResult(TestResultUtility.setResults("MTB-1456,MTB-1457"));
-			e.getStackTrace();
-			Factory.getFactory().getReporter().fail(e);
+			System.out.println("prtinting stack tarce");
+			e.printStackTrace();
+			Factory.getFactory().getExtentObject().fail(e);
 			Assert.fail(e.toString());
 		}
 	}
@@ -121,10 +131,11 @@ public class GetMembers extends BaseTest {
 		passedResults=TestResultUtility.setResults("MTB-1458,MTB-1459");
 		try
 		{
-			Factory.getFactory().setReporter(report.createTest("test_02_GetMembers_ValidInput for "+datamap.get("page").toString(), " verifying get valid input"));
-			Factory.getFactory().getReporter().info(datamap.toString());
-			Response=httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
-			if(!restValidater.StatusCodeValidation(Response, 200,Factory.getFactory().getReporter()))
+			test=report.createTest("test_02_GetMembers_ValidInput for "+datamap.get("page").toString(), " verifying get valid input").assignCategory("GET MEMBERS");
+			Factory.getFactory().setExtentObject(test);
+			Factory.getFactory().getExtentObject().info(datamap.toString());
+			Response=RestFactory.getRestFactory().getRestBase().httpGet(Property.readPropetyValue("BaseURI"),Property.readPropetyValue("GetMembers"), headers, pathParams, queryParams);
+			if(!RestValidations.StatusCodeValidation(Response, 200))
 		//		if(Integer.parseInt(datamap.get("page").toString())==220 && (retry.getTriedCount()==0 || retry.getTriedCount()==1))
 			{
 				System.err.println("Failing the test Cases");
@@ -138,21 +149,21 @@ public class GetMembers extends BaseTest {
 				System.err.println(retry.getTriedCount());
 			}
 
-		if(!restValidater.checkStatusLine(Response,"HTTP/1.1 200 OK"))
+		if(!RestValidations.checkStatusLine(Response,"HTTP/1.1 200 OK"))
 		{
 			result=false;
 			passedResults.remove("MTB-1459");
 			failedResults.add("MTB-1459");
 		}
-		Factory.getFactory().getReporter().info("passed Test Cases "+passedResults +"<div> failed Test Cases is "+ failedResults);
+		Factory.getFactory().getExtentObject().info("passed Test Cases "+passedResults +"<div> failed Test Cases is "+ failedResults);
 		TestResultUtility.writePassedTestResult(passedResults);
 		TestResultUtility.writeFailedTestResult(failedResults);
 		Assert.assertTrue(result,"Failed GetMember Valid Input");
 		}
 		catch (Exception e) {
 			TestResultUtility.writeFailedTestResult(TestResultUtility.setResults("MTB-1458,MTB-1459"));
-			e.getStackTrace();
-			Factory.getFactory().getReporter().fail(e);
+			e.printStackTrace();
+			Factory.getFactory().getExtentObject().fail(e);
 			Assert.fail(e.toString());
 		}
 	}
